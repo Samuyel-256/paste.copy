@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Admin Dashboard - PASTE.COPY_AI</title>
+  <!-- Cache busting: prevents stale content on mobile -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+  <div class="container" id="loginContainer">
+    <div class="login-container">
+      <div class="login-card">
+        <h2>Admin <span class="gradient-text">Login</span></h2>
+        <div class="form-group">
+          <input type="password" id="secretCode" class="form-control" placeholder="Enter secret code" autocomplete="off">
+          <div id="loginError" class="error-msg">Incorrect Code.</div>
+        </div>
+        <button id="loginBtn" class="btn btn-primary" style="width: 100%">Access Dashboard</button>
+        <a href="index.html" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;">Return to Homepage</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container dashboard" id="dashboardContainer">
+    <div class="dashboard-header">
+      <h2>Hub <span class="gradient-text">Dashboard</span></h2>
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="index.html" class="btn btn-secondary">Home</a>
+        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Form Panel -->
+      <div class="admin-panel">
+        <h3 id="formTitle">Add New Content</h3>
+        <form id="contentForm">
+          <input type="hidden" id="editId" value="">
+          
+          <div class="form-group">
+            <label class="form-label">Title of Post/Reel *</label>
+            <input type="text" id="postTitle" class="form-control" required placeholder="e.g. 5 ChatGPT Hacks">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Shortcut Text (Tips/Notes) *</label>
+            <textarea id="shortcutText" class="form-control" required placeholder="e.g. Prompt structure: Context + Task + Format"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Instagram or YouTube URL *</label>
+            <input type="url" id="postUrl" class="form-control" required placeholder="https://instagram.com/reel/...">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">AI Tool Link 1 (Optional)</label>
+            <input type="url" id="aiLink1" class="form-control" placeholder="https://chat.openai.com">
+            <input type="text" id="aiLink1Title" class="form-control" placeholder="Tool 1 Name (e.g. ChatGPT)" style="margin-top: 0.5rem">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">AI Tool Link 2 (Optional)</label>
+            <input type="url" id="aiLink2" class="form-control" placeholder="https://midjourney.com">
+            <input type="text" id="aiLink2Title" class="form-control" placeholder="Tool 2 Name (e.g. Midjourney)" style="margin-top: 0.5rem">
+          </div>
+          
+          <button type="submit" id="saveBtn" class="btn btn-primary" style="width: 100%">Publish Content</button>
+          <button type="button" id="cancelEditBtn" class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem; display: none;">Cancel Edit</button>
+        </form>
+      </div>
+
+      <!-- Published Items List -->
+      <div class="list-panel">
+        <h3>Published Entries</h3>
+        <div id="adminList">
+          <!-- Dynamically populated admin list -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK (required for cross-device real-time sync) -->
+  <!-- Remove these 2 lines if you are NOT using Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="admin.js?v=4"></script>
+</body>
+</html>
